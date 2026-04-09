@@ -61,6 +61,7 @@
 
 ## 🗂️ DER (Diagrama Entidade-Relacionamento)
 
+```
 [Licenciatura]
 ├── nome
 ├── imagem
@@ -130,3 +131,5 @@
 ├── data
 ├── imagem
 ├── descricao
+```
+
