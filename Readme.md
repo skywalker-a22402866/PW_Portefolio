@@ -8,7 +8,6 @@
 
 ### 📖 UCs (Unidades Curriculares)
 - Apresentação
-- Projetos
 - Imagem
 - Docentes
 - Semestres
