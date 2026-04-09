@@ -1,138 +1,63 @@
-#Repositorio PW
+# 📚 Repositório PW — Estrutura da Base de Dados
 
-🧠 VISÃO FINAL DA BD
+## 🧠 Visão Geral
 
-🎓 Licenciatura
--UCs
--Imagem
+### 🎓 Licenciatura
+- UCs
+- Imagem
 
+### 📖 UCs (Unidades Curriculares)
+- Apresentação
+- Projetos
+- Imagem
+- Docentes
+- Semestres
+- ECTS
 
-UCs
--Apresentação
--Projetos
--Imagem
--Docentes
--Semestres
--ECTS
+### 🧑‍🏫 Docentes
+- Nome
+- Imagem
+- Link página pessoal Lusófona
 
-🧑‍🏫 Docentes
--Nome
--Imagem
--Link pagina pessoal Lusofona
+### 📁 Projetos
+- Nome
+- UC
+- Descrição
+- Imagem
+- Link GitHub
 
+### 🛠️ Tecnologias
+- Tipo
+- Nome
+- Logo
+- Link
+- Nível de Interesse
 
-📁 Projetos
--Nome
--UC
--Descrição
--imagem
--Link GitHub
+### 🧪 TFC
+- Nome
+- Resumo
+- Tecnologias
+- Imagem
+- Docente
 
-🛠️ Tecnologias
--Tipo
--Nome
--Logo
--Link
--Nivel de Interesse
+### 🧠 Competências
+- Nome
+- Nível
+- Formação
+- Tecnologia
 
-🧪 TFC
--Nome
--Resumo
--tecnologias
--Imagem
--Docente
+### 📈 Formação
+- Nome
+- Data
+- Descrição
 
-Competências
--Nome
--Nivel
--Formação
--Tecnologia
+### 🎬 Making Of
+- Nome
+- Data
+- Imagem
+- Descrição
 
-📈 Formação
--Nome
--Data
--Descrição
+---
 
-🎬 MakingOf
--Nome
--data
--imagem
--Descrição
-
-
-
-
-____________________________________________________________________________________________________________________________________________________________________
-
-DER (Diagrama Entidade-Relacionamento)
-
-[Licenciatura]
-   ├── nome
-   ├── imagem
-   │
-   │ 1:N
-   ↓
-[UnidadeCurricular]
-   ├── nome
-   ├── apresentacao
-   ├── semestre
-   ├── ects
-   │
-   ├── 1:N → [Projeto]
-   ├── 1:N → [Imagem]
-   └── N:M → [Docente]
-
-[Docente]
-   ├── nome
-   ├── imagem
-   ├── link_lusofona
-   │
-   ├── N:M → UnidadeCurricular
-   └── 1:N → TFC
-
-[Projeto]
-   ├── nome
-   ├── descricao
-   ├── imagem
-   ├── github
-   │
-   └── N:1 → UnidadeCurricular
-
-[TFC]
-   ├── nome
-   ├── resumo
-   ├── imagem
-   │
-   ├── N:1 → Docente
-   └── N:M → Tecnologia
-
-[Tecnologia]
-   ├── nome
-   ├── tipo
-   ├── logo
-   ├── link
-   ├── nivel_interesse
-   │
-   ├── N:M → TFC
-   └── 1:N → Competência
-
-[Formacao]
-   ├── nome
-   ├── data
-   ├── descricao
-   │
-   └── 1:N → Competencia
-
-[Competencia]
-   ├── nome
-   ├── nivel
-   │
-   ├── N:1 → Formacao
-   └── N:1 → Tecnologia
-
-[MakingOf]
-   ├── nome
-   ├── data
-   ├── imagem
-   ├── descricao
+## 🗂️ DER (Diagrama Entidade-Relacionamento)
 
