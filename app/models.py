@@ -1,13 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class Utilizador(models.Model):
-    nome = models.CharField(max_length=200)
-    email = models.EmailField(unique=True)
-    imagem = models.ImageField(upload_to='utilizadores/', blank=True, null=True)
-
-    def __str__(self):
-        return self.nome
 
 # ======================
 # Licenciatura
@@ -47,17 +40,11 @@ class UnidadeCurricular(models.Model):
         Licenciatura, on_delete=models.CASCADE, related_name='ucs'
     )
     docentes = models.ManyToManyField(Docente, related_name='ucs')
+    imagem = models.ImageField(upload_to='ucs/imagens/',blank=True, null=True)
 
     def __str__(self):
         return self.nome
 
-# ======================
-# Imagens da UC
-# ======================
-class ImagemUC(models.Model):
-    uc = models.ForeignKey(UnidadeCurricular, on_delete=models.CASCADE, related_name='imagens')
-    imagem = models.ImageField(upload_to='ucs/imagens/')
-    descricao = models.CharField(max_length=255, blank=True)
 
 # ======================
 # Projetos
