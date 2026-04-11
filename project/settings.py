@@ -117,7 +117,7 @@ USE_TZ = True
 
 import os
 #Pasta no servidor onde os ficheiros vão ser guardados
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-#URL publica para aceder aos ficheiros
-MEDIA_URL = '/media/'
+STATIC_URL = '/static/'

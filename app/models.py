@@ -7,7 +7,7 @@ from django.db import models
 # ======================
 class Licenciatura(models.Model):
     nome = models.CharField(max_length=200)
-    imagem = models.ImageField(upload_to='licenciaturas/', blank=True, null=True)
+    imagem = models.ImageField(upload_to='app/licenciaturas/', blank=True, null=True)
 
     def __str__(self):
         return self.nome
@@ -17,7 +17,7 @@ class Licenciatura(models.Model):
 # ======================
 class Docente(models.Model):
     nome = models.CharField(max_length=200)
-    imagem = models.ImageField(upload_to='docentes/', blank=True, null=True)
+    imagem = models.ImageField(upload_to='app/docentes/', blank=True, null=True)
     link_lusofona = models.URLField(blank=True)
 
     def __str__(self):
@@ -40,7 +40,7 @@ class UnidadeCurricular(models.Model):
         Licenciatura, on_delete=models.CASCADE, related_name='ucs'
     )
     docentes = models.ManyToManyField(Docente, related_name='ucs')
-    imagem = models.ImageField(upload_to='ucs/imagens/',blank=True, null=True)
+    imagem = models.ImageField(upload_to='app/ucs/',blank=True, null=True)
 
     def __str__(self):
         return self.nome
@@ -53,7 +53,7 @@ class Projeto(models.Model):
     uc = models.ForeignKey(UnidadeCurricular, on_delete=models.CASCADE, related_name='projetos')
     nome = models.CharField(max_length=200)
     descricao = models.TextField()
-    imagem = models.ImageField(upload_to='ucs/projetos/', blank=True, null=True)
+    imagem = models.ImageField(upload_to='app/projetos/', blank=True, null=True)
     github = models.URLField(blank=True)
 
     def __str__(self):
@@ -78,7 +78,7 @@ NIVEL_CHOICES = [
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=100)
     tipo = models.CharField(max_length=20, choices=TIPO_TECH_CHOICES)
-    logo = models.ImageField(upload_to='tecnologias/', blank=True, null=True)
+    logo = models.ImageField(upload_to='app/tecnologias/', blank=True, null=True)
     link = models.URLField(blank=True)
     nivel_interesse = models.IntegerField(choices=NIVEL_CHOICES)
 
@@ -91,7 +91,7 @@ class Tecnologia(models.Model):
 class TFC(models.Model):
     nome = models.CharField(max_length=200)
     resumo = models.TextField()
-    imagem = models.ImageField(upload_to='tfc/', blank=True, null=True)
+    imagem = models.ImageField(upload_to='app/tfc/', blank=True, null=True)
     docente = models.ForeignKey(Docente, on_delete=models.SET_NULL, null=True, related_name='tfcs')
     tecnologias = models.ManyToManyField(Tecnologia, related_name='tfcs')
 
@@ -133,7 +133,7 @@ class Competencia(models.Model):
 class MakingOf(models.Model):
     nome = models.CharField(max_length=200)
     data = models.DateField()
-    imagem = models.ImageField(upload_to='makingof/', blank=True, null=True)
+    imagem = models.ImageField(upload_to='app/makingof/', blank=True, null=True)
     descricao = models.TextField()
 
     def __str__(self):
