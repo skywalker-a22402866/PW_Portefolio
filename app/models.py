@@ -62,12 +62,6 @@ class Projeto(models.Model):
 # ======================
 # Tecnologias
 # ======================
-TIPO_TECH_CHOICES = [
-    ('linguagem', 'Linguagem'),
-    ('framework', 'Framework'),
-    ('bd', 'Base de Dados'),
-    ('ferramenta', 'Ferramenta'),
-]
 
 NIVEL_CHOICES = [
     (1, 'Baixo'),
@@ -77,10 +71,9 @@ NIVEL_CHOICES = [
 
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=100)
-    tipo = models.CharField(max_length=20, choices=TIPO_TECH_CHOICES)
     logo = models.ImageField(upload_to='app/tecnologias/', blank=True, null=True)
     link = models.URLField(blank=True)
-    nivel_interesse = models.IntegerField(choices=NIVEL_CHOICES)
+    nivel_interesse = models.IntegerField(choices=NIVEL_CHOICES, null=True)
 
     def __str__(self):
         return self.nome
@@ -89,7 +82,7 @@ class Tecnologia(models.Model):
 # TFC
 # ======================
 class TFC(models.Model):
-    nome = models.CharField(max_length=200)
+    nome = models.CharField(max_length=300)
     resumo = models.TextField()
     imagem = models.ImageField(upload_to='app/tfc/', blank=True, null=True)
     docente = models.ForeignKey(Docente, on_delete=models.SET_NULL, null=True, related_name='tfcs')
