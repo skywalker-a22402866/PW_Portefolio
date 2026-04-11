@@ -26,7 +26,6 @@
 - Link GitHub
 
 ### 🛠️ Tecnologias
-- Tipo
 - Nome
 - Logo
 - Link
