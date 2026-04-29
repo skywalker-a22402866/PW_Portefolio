@@ -1,0 +1,12 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+
+<h1>TFCs</h1>
+
+{% for tfc in tfcs %}
+        <div class="card">
+            {{ tfc.nome }}     
+        </div>
+{% endfor %}
+{% endblock %}

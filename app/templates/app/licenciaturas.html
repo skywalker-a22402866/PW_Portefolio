@@ -1,0 +1,12 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+
+<h1>Licenciaturas</h1>
+
+{% for Licenciatura in licenciaturas %}
+        <div class="card">
+            {{ Licenciatura.nome }}       
+        </div>
+{% endfor %}
+{% endblock %}
