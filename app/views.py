@@ -10,7 +10,12 @@ def licenciaturas_view(request):
     licenciaturas = Licenciatura.objects.all()
     return render(request, 'app/licenciaturas.html', {'licenciaturas': licenciaturas})
 
-# LISTA DE LICENCIATURAS
+# LISTA DE TFCS
 def tfcs_view(request):
     TFCs = TFC.objects.all()
     return render(request, 'app/tfcs.html', {'tfcs': TFCs})
+
+# LISTA DE DOCENTES
+def docentes_view(request):
+    docentes = Docente.objects.all()
+    return render(request, 'app/docentes.html', {'docentes': docentes})

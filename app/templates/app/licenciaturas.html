@@ -6,7 +6,11 @@
 
 {% for Licenciatura in licenciaturas %}
         <div class="card">
-            {{ Licenciatura.nome }}       
+            <h3>{{ Licenciatura.nome }}</h3>
+            <h4>Unidades Curriculares:</h4> 
+            {% for unidade in Licenciatura.ucs.all %}
+                <li>{{ unidade.nome }} - Semestre: {{ unidade.semestre }} - ects: {{ unidade.ects }}</li>
+            {% endfor %}       
         </div>
 {% endfor %}
 {% endblock %}

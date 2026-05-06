@@ -6,79 +6,139 @@
     <title>Portefolio 26</title>
 
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0d0d0d;
-            color: #f5f5f5;
-        }
+        /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        header {
-            display:flex; 
-            align-items:center; 
-            justify-content:space-between;  
-            background: rgb(122, 28, 209);
-            padding: 20px;
-        }
+/* Base */
+body {
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: #e5e7eb;
 
-        nav {
-            margin-top: 10px;
-        }
-
-        nav a {
-            color: whitesmoke;
-            text-decoration: none;
-            margin-right: 20px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        main {
-            padding: 40px;
-        }
+    background: 
+        linear-gradient(rgba(10,10,20,0.85), rgba(10,10,20,0.95)),
+        /*url('https://images.unsplash.com/photo-1518770660439-4636190af475');*/
+        url("/static/app/code_banner.avif");
 
         
-        h3 {
-            color: rgb(34, 77, 219);
-            margin-top: 60px;
-        }
-        
-        .card {
-            background: #1a1a1a;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-left: 4px solid  rgb(122, 28, 209);
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-        .card a {
-            color: #f5f5f5;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, #554069, #5b21b6);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
 
-        .card a:hover {
-            font-weight: bold;
-        }
+header img {
+    height: 80px;
+    border-radius: 10px;
+}
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #333;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
+/* Navegação */
+nav a {
+    color: #f9fafb;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Main */
+main {
+    padding: 60px 80px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Títulos */
+h3 {
+    color: #a78bfa;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+/* Cards */
+.card {
+    background: rgba(17, 24, 39, 0.75); /* semi-transparente */
+    backdrop-filter: blur(10px); /* efeito glass */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    border-left: 4px solid #a78bfa;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    transition: all 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+}
+
+/* Links dentro dos cards */
+.card a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.card a:hover {
+    color: #c4b5fd;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    border-top: 1px solid #27272a;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-top: 40px;
+}
     </style>
 </head>
 <body>
 
     <header>
         {% load static %}
-        <img src="{% static 'app/portefolio.jpg' %}" alt="Imagem inicio" style="height: 150px; vertical-align: middle; margin-right: 15px;">
+        <!--
+        <img src="{% static 'app/code_banner.avif' %}" alt="Imagem inicio" style="height: 300px; vertical-align: middle; margin-right: 15px;">
+        -->
+
+    <h1>PORTEFOLIO</h1>
         <nav>
             <a href="{% url 'index' %}">Início</a>
             <a href="{% url 'licenciaturas' %}">Licenciaturas</a>
             <a href="{% url 'tfcs' %}">TFCs</a>
+            <a href="{% url 'docentes' %}">Docentes</a>
         </nav>
     </header>
 

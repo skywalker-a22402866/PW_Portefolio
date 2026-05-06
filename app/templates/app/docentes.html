@@ -1,0 +1,12 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+
+<h1>Docentes</h1>
+
+{% for docente in docentes %}
+        <div class="card">
+            {{ docente.nome }}       
+        </div>
+{% endfor %}
+{% endblock %}
