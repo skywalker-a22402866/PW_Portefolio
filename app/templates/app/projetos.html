@@ -1,0 +1,12 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+<h1>Projetos</h1>
+
+{% for projeto in projetos %}
+        <div class="card">
+            {{ projeto.nome }}     
+        </div>
+{% endfor %}
+<a href="{% url 'projeto_novo' %}">Novo</a>
+{% endblock %}
