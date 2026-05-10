@@ -13,4 +13,5 @@ urlpatterns = [
     path('makingOf/', views.makingOfs_view, name='makingOfs'),
     path('editar_projeto/<int:pk>/',views.editar_projeto, name='editar_projeto'),
     path('projeto/<int:pk>/apagar/', views.apagar_projeto, name='projeto_apagar'),
+    path('sobre/', views.sobre_view, name='sobre'),
 ]

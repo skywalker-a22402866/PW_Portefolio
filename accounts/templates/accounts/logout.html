@@ -1,0 +1,16 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+
+<h1>Logout</h1>
+
+<p>Tem a certeza que quer terminar a sessão?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Sim, terminar sessão</button>
+</form>
+
+<a href="{% url 'index' %}">Cancelar</a>
+
+{% endblock %}
