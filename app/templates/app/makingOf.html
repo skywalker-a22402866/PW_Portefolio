@@ -1,0 +1,12 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+<h1>Making of...</h1>
+{% for makingOf in makingOfs %}
+        <div class="card">
+            <h4>{{ makingOf.nome }}</h4>   
+                <li>Data: {{ makingOf.data }} </li>
+                <img src="{{ makingOf.imagem.url }}" alt="{{ makingOf.nome }}">
+        </div>
+{% endfor %}
+{% endblock %}

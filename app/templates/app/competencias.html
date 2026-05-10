@@ -1,0 +1,13 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+<h1>Competencias Adquiridas</h1>
+{% for competencia in competencias %}
+        <div class="card">
+            <h4>{{ competencia.nome }}</h4>   
+                <li>{{ competencia.formacao.nome }} </li>
+                <h5>Nivel: {{ competencia.nivel }}</h5>
+                <h5>{{ competencia.tecnologia.nome }}</h5>
+        </div>
+{% endfor %}
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Licenciatura, Docente, UnidadeCurricular, Projeto, Tecnologia, TFC, Competencia, MakingOf
 from .forms import ProjetoForm
 
@@ -24,10 +24,25 @@ def docentes_view(request):
 # LISTA DE PROJETOS
 def projetos_view(request):
     projetos = Projeto.objects.all()
-    return render(request, 'app/projetos.html', {'projetos': projetos})    
+    return render(request, 'app/projetos.html', {'projetos': projetos}) 
+
+# LISTA de UNIDADES
+def unidades_view(request):
+    unidades = UnidadeCurricular.objects.all()
+    return render(request, 'app/unidades.html', {'unidades': unidades})       
+
+# LISTA de COMPETENCIAS
+def competencias_view(request):
+    competencias = Competencia.objects.all()
+    return render(request, 'app/competencias.html', {'competencias': competencias}) 
+
+# LISTA de COMPETENCIAS
+def makingOfs_view(request):
+    makingOfs = MakingOf.objects.all()
+    return render(request, 'app/makingOf.html', {'makingOfs': makingOfs})      
+
 
 # FORM para adicionar projeto
-
 def projeto_novo_view(request):
 
     if request.method == 'POST':
@@ -43,3 +58,28 @@ def projeto_novo_view(request):
     return render(request, 'app/projeto_novo.html', {
         'form': form
     })
+
+#FORM edição Projeto
+def editar_projeto(request, pk):
+    projeto = get_object_or_404(Projeto, pk=pk)
+
+    if request.method == 'POST':
+        form = ProjetoForm(request.POST, request.FILES, instance=projeto)
+        if form.is_valid():
+            form.save()
+            return redirect('projetos_view')
+    else:
+        form = ProjetoForm(instance=projeto)
+
+    #print(form)  # vê no terminal
+    return render(request, 'app/editar_projeto.html', {'form': form})
+
+#Apagar Projeto
+def apagar_projeto(request, pk):
+    projeto = get_object_or_404(Projeto, pk=pk)
+
+    if request.method == 'POST':
+        projeto.delete()
+        return redirect('projetos_view')
+
+    return render(request, 'app/apagar_projeto.html', {'projeto': projeto})

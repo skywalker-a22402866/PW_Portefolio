@@ -1,0 +1,13 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+<h1>Unidades Curriculares</h1>
+{% for unidade in unidades %}
+        <div class="card">
+            <h4>{{ unidade.nome }}</h4>   
+                <li>{{ unidade.licenciatura.nome }} </li>
+                <h5>{{ unidade.apresentacao }}</h5>
+                
+        </div>
+{% endfor %}
+{% endblock %}

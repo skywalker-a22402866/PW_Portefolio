@@ -2,11 +2,19 @@
 
 {% block content %}
 <h1>Projetos</h1>
+<button>
+    <a href="{% url 'projeto_novo' %}">Novo Projeto</a>
+</button>
 
 {% for projeto in projetos %}
         <div class="card">
-            {{ projeto.nome }}     
+            {{ projeto.nome }}
+            <button>
+                <a href="{% url 'editar_projeto' projeto.id %}">Editar</a>     
+            </button>
+            <button>
+                <a href="{% url 'projeto_apagar' projeto.id %}">Apagar</a>
+            </button>
         </div>
 {% endfor %}
-<a href="{% url 'projeto_novo' %}">Novo</a>
 {% endblock %}

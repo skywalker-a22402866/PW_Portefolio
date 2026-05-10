@@ -1,0 +1,19 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+
+<h1>Apagar Projeto</h1>
+
+<p>Tens a certeza que queres apagar:</p>
+
+<strong>{{ projeto.nome }}</strong>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, apagar</button>
+    <button>
+        <a href="{% url 'projetos' %}">Cancelar</a>
+    </button>
+    </form>
+
+{% endblock %}
