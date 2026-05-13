@@ -76,7 +76,7 @@ def editar_projeto(request, pk):
         form = ProjetoForm(request.POST, request.FILES, instance=projeto)
         if form.is_valid():
             form.save()
-            return redirect('projetos_view')
+            return redirect('projetos')
     else:
         form = ProjetoForm(instance=projeto)
 
@@ -89,7 +89,7 @@ def apagar_projeto(request, pk):
 
     if request.method == 'POST':
         projeto.delete()
-        return redirect('projetos_view')
+        return redirect('projetos')
 
     return render(request, 'app/apagar_projeto.html', {'projeto': projeto})
 
