@@ -51,7 +51,7 @@ def makingOfs_view(request):
 
 # FORM para adicionar projeto
 @login_required
-@user_passes_test(is_gestor)
+#@user_passes_test(is_staff)
 def projeto_novo_view(request):
 
     if request.method == 'POST':
