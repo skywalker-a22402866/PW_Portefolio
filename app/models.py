@@ -131,3 +131,22 @@ class MakingOf(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+#=======================
+# Artigos
+#=======================
+class Artigo(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao = models.CharField(max_length=250)
+    likes = models.IntegerField
+
+    def __str__(self):
+        return self.nome
+
+#=======================
+# Comentarios
+#=======================
+class Comentario(models.Model):
+    texto = models.CharField(max_length=250)
+    comentario = models.ForeignKey(Artigo, on_delete=models.CASCADE, related_name='comentarios')

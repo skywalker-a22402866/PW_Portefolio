@@ -1,0 +1,26 @@
+{% extends 'app/layout.html' %}
+
+{% block content %}
+
+<h1>Artigos</h1>
+{% if user.is_authenticated %}
+    <button>
+        <a href="{% url 'artigo_novo' %}">Novo Artigo</a>
+    </button>
+{% endif %}
+
+{% for artigo in artigos %}
+        <div class="card">
+            <h3>{{ artigo.nome }}</h3>
+            <h4>{{ artigo.descricao }}</h4>
+            <h4>.................................................................... </ha>
+            <h4>Comentarios:</h4> 
+            {% for comentario in artigo.comentarios.all %}
+                <li>{{ comentario.texto }}</li>
+            {% endfor %}
+            <button>
+                    <a href="{% url 'comentario_novo' artigo.id  %}">Comentar artigo</a>
+                </button>       
+            </div>
+{% endfor %}
+{% endblock %}

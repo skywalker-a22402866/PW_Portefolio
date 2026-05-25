@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Licenciatura, Docente, UnidadeCurricular, Projeto, Tecnologia, TFC, Competencia, MakingOf
-from .forms import ProjetoForm
+from .models import Licenciatura, Docente, UnidadeCurricular, Projeto, Tecnologia, TFC, Competencia, MakingOf, Artigo, Comentario
+from .forms import ProjetoForm, ArtigoForm, ComentarioForm
 import markdown
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
@@ -69,6 +69,7 @@ def projeto_novo_view(request):
     })
 
 #FORM edição Projeto
+@login_required
 def editar_projeto(request, pk):
     projeto = get_object_or_404(Projeto, pk=pk)
 
@@ -84,6 +85,7 @@ def editar_projeto(request, pk):
     return render(request, 'app/editar_projeto.html', {'form': form})
 
 #Apagar Projeto
+@login_required
 def apagar_projeto(request, pk):
     projeto = get_object_or_404(Projeto, pk=pk)
 
@@ -92,6 +94,57 @@ def apagar_projeto(request, pk):
         return redirect('projetos')
 
     return render(request, 'app/apagar_projeto.html', {'projeto': projeto})
+
+#Pagina artigos
+def artigos_view(request):
+    artigos = Artigo.objects.all()
+    return render(request, 'app/artigos.html', {'artigos': artigos})      
+
+# FORM para adicionar projeto
+@login_required
+#@user_passes_test(is_staff)
+def artigo_novo_view(request):
+
+    if request.method == 'POST':
+        form = ArtigoForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('artigos')
+
+    else:
+        form = ArtigoForm()
+
+    return render(request, 'app/artigo_novo.html', {
+        'form': form
+    })
+
+def comentario_novo_view(request, pk):
+    artigo = get_object_or_404(Artigo, pk=pk)
+
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.artigo = artigo
+            comentario.save()
+
+            return redirect('artigos')
+
+    else:
+        form = ComentarioForm()
+
+    return render(
+        request,
+        'app/comentario_novo.html',
+        {
+            'form': form,
+            'artigo': artigo
+        }
+    )
+
+
 
 #Pagina sobre
 def sobre_view(request):
