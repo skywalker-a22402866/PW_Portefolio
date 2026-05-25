@@ -70,6 +70,9 @@ nav a:hover::after {
     width: 100%;
 }
 
+
+
+
 /* Main */
 main {
     padding: 60px 80px;
@@ -87,18 +90,21 @@ h3 {
 
 /* Cards */
 .card {
-    background: rgba(17, 24, 39, 0.75); /* semi-transparente */
-    backdrop-filter: blur(10px); /* efeito glass */
+    background: rgba(17, 24, 39, 0.75);
+    backdrop-filter: blur(10px);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 14px;
     border-left: 4px solid #a78bfa;
     box-shadow: 0 8px 30px rgba(0,0,0,0.6);
     transition: all 0.25s ease;
-    img {
-        width: 500px;
-        height: 400px;
-    }
+}
+
+.card img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
 }
 
 .card:hover {
@@ -127,6 +133,7 @@ button {
     margin-right: 10px;
 }
 
+
 /* Footer */
 footer {
     text-align: center;
@@ -138,6 +145,7 @@ footer {
 }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -145,8 +153,10 @@ footer {
         <!--
         <img src="{% static 'app/code_banner.avif' %}" alt="Imagem inicio" style="height: 300px; vertical-align: middle; margin-right: 15px;">
         -->
-
-    <h1>PORTEFOLIO</h1>
+    <h1>
+      <span>PORTEFOLIO</span>
+      <span class="hamburger">&#9776;</span>
+    </h1>
         <nav>
             <a href="{% url 'index' %}">Início</a>
             <a href="{% url 'licenciaturas' %}">Licenciaturas</a>
@@ -177,6 +187,14 @@ footer {
     <footer>
         <p>PW 2026</p>
     </footer>
+<script>
+const hamburger = document.querySelector(".hamburger");
+const nav = document.querySelector("nav");
+
+hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mostrar");
+});
+</script>
 
 </body>
 </html>

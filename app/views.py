@@ -97,15 +97,16 @@ def apagar_projeto(request, pk):
 def sobre_view(request):
     texto_md = """
 
-# TITULO
+# UM POUCO SOBRE MIM...
 
-## Sub-Titulo
+## Nuno Tainha
 
-Esta frase é de exempo.
+Aluno de LEI e já com curso de Engenharia Electrotecnia.
 
-* item 1
-* item 2
-* item 3
+* Forte aptidões para Sistemas Digitais
+* Gosto de trabalho de redes
+* Vejo me mais como programador de hardware, área que mais aprecio.
+
 
 """
     texto_html = markdown.markdown(texto_md)
