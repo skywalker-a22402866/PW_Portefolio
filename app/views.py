@@ -4,6 +4,8 @@ from .forms import ProjetoForm, ArtigoForm, ComentarioForm
 import markdown
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.models import User, Group
+
 
 
 def is_gestor(user):
@@ -164,3 +166,40 @@ Aluno de LEI e já com curso de Engenharia Electrotecnia.
 """
     texto_html = markdown.markdown(texto_md)
     return render (request, 'app/sobre.html', {'texto':texto_html})
+
+
+
+def registo_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+
+        if User.objects.filter(username=username).exists():
+            return render(request, "app/registo.html", {
+                "erro": "Esse username já existe."
+            })
+
+        user = User.objects.create_user(
+            username=username,
+            email=request.POST["email"],
+            first_name=request.POST["nome"],
+            last_name=request.POST["apelido"],
+            password=request.POST["password"]
+        )
+
+        grupo, _ = Group.objects.get_or_create(name="bloggers")
+        user.groups.add(grupo)
+
+        return redirect("login")
+
+    return render(request, "app/registo.html")
+
+
+def like_artigo(request, pk):
+    artigo = get_object_or_404(Artigo, pk=pk)
+    artigo.likes += 1
+    artigo.save()
+
+    return redirect('artigos')
+
+def videotutoriais_view(request):
+    return render(request, 'app/videotutoriais.html')

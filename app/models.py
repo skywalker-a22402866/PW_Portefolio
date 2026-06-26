@@ -139,7 +139,7 @@ class MakingOf(models.Model):
 class Artigo(models.Model):
     nome = models.CharField(max_length=100)
     descricao = models.CharField(max_length=250)
-    likes = models.IntegerField
+    likes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nome
@@ -150,3 +150,6 @@ class Artigo(models.Model):
 class Comentario(models.Model):
     texto = models.CharField(max_length=250)
     comentario = models.ForeignKey(Artigo, on_delete=models.CASCADE, related_name='comentarios')
+    data_criacao = models.DateTimeField(auto_now_add=True, null=True)
+    autor = models.CharField(max_length=100, null=True)
+

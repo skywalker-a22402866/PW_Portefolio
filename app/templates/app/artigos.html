@@ -13,10 +13,15 @@
         <div class="card">
             <h3>{{ artigo.nome }}</h3>
             <h4>{{ artigo.descricao }}</h4>
+            <p>👍 Likes: {{ artigo.likes }}</p>
+                <a href="{% url 'like_artigo' artigo.id %}">
+                    <button>👍 Gosto</button>
+                </a>
             <h4>.................................................................... </ha>
             <h4>Comentarios:</h4> 
             {% for comentario in artigo.comentarios.all %}
                 <li>{{ comentario.texto }}</li>
+                <small>{{ comentario.data_criacao }}</small>
             {% endfor %}
             <button>
                     <a href="{% url 'comentario_novo' artigo.id  %}">Comentar artigo</a>

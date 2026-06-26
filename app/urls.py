@@ -17,4 +17,7 @@ urlpatterns = [
     path('artigos/', views.artigos_view, name='artigos'),
     path('artigo_novo/', views.artigo_novo_view, name = 'artigo_novo'),
     path('comentario_novo/<int:pk>/', views.comentario_novo_view, name = 'comentario_novo'),
+    path('registo/', views.registo_view, name="registo"),
+    path('artigo/<int:pk>/like/', views.like_artigo, name='like_artigo'),
+    path('videotutoriais/', views.videotutoriais_view, name='videotutoriais'),
 ]

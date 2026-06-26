@@ -168,6 +168,8 @@ footer {
             <a href="{% url 'makingOfs' %}">MakingOf</a>
             <a href="{% url 'sobre' %}">Sobre</a>
             <a href="{% url 'artigos' %}">Artigos</a>
+            <a href="{% url 'videotutoriais' %}">Videotutoriais</a>
+            <a href="{% url 'registo' %}"><button>Registar User</button></a>
 
             {% if user.is_authenticated %}
                 <form method="POST" action="{% url 'logout' %}" style="display:inline;">
